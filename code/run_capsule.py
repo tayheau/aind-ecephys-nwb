@@ -746,6 +746,7 @@ if __name__ == "__main__":
                 if nwbfile_input_path is not None:
                     # if we have an input file, we read it and write it to the output file
                     export_io = io_class(str(nwbfile_output_path), "w")
+                    logging.info(f"749: scr_io: {read_io}, nwbfile: {nwbfile}, args: {write_args}")
                     export_io.export(src_io=read_io, nwbfile=nwbfile, write_args=write_args)
                     read_io.close()
                 else:
@@ -753,6 +754,7 @@ if __name__ == "__main__":
                     nwbfile_output_path = results_folder / f"{nwb_file_name}.nwb"
                     # write the nwb file
                     with io_class(str(nwbfile_output_path), "w") as write_io:
+                        logging.info(f"757")
                         write_io.write(nwbfile)
                 t_write_end = time.perf_counter()
                 elapsed_time_write = np.round(t_write_end - t_write_start, 2)
